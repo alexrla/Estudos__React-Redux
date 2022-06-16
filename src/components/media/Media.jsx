@@ -1,22 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { connect } from 'react-redux';
+
+// Acessando via props, o que está dentro do estado
+function mapStateToProps(state) {
+    return {
+        minimo: state.numeros.minimo,
+        maximo: state.numeros.maximo
+    };
+}
+
 function Media(props) {
     const { minimo, maximo } = props;
-
-    const media = (maximo + minimo) / 2;
 
     return (
         <Container>
             <span className="content">
                 <span>Resultado:</span>
-                <strong>{media}</strong>
+                <strong>{(maximo + minimo) / 2}</strong>
             </span>
         </Container>
     );
 }
 
-export default Media;
+export default connect(mapStateToProps) (Media);
 
 const Container = styled.div`
     .content    {
