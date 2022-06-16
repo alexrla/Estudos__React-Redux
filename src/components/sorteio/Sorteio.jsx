@@ -2,11 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 
 function Sorteio(props) {
+    const { minimo, maximo } = props;
+
+    const aleatorio = parseInt(Math.random() * (maximo - minimo)) + minimo;
+
     return (
         <Container>
             <span className="content">
                 <span>Resultado:</span>
-                <strong>10</strong>
+                <strong>{aleatorio}</strong>
             </span>
         </Container>
     );
